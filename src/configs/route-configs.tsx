@@ -5,11 +5,11 @@ export default function RouterConfig() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<App />}></Route>
+        <Route path="" element={<App />}></Route>
       </Routes>
 
       <Routes>
-        <Route path="/yoo" element=""></Route>
+        <Route path="" element=""></Route>
       </Routes>
     </>
   );
