@@ -2,7 +2,7 @@ import axios from "axios";
 
 export async function shortenUrl(url: string) {
   try {
-    const resp = await axios.post("https://short-url.fijero.dev/shorten", {
+    const resp = await axios.post("https://short-url-api.fijero.dev/shorten", {
       longUrl: url,
     });
     return resp.data;
