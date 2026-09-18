@@ -42,7 +42,7 @@ export default function App() {
           className="flex flex-col justify-center items-center"
           onSubmit={handleSubmit}
         >
-          <div className="w-2xl">
+          <div className="w-90 md:w-2xl">
             <input
               type="url"
               className="w-full h-12 px-3 border border-b-amber-50 outline-0"
