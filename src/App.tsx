@@ -8,7 +8,8 @@ import { toast } from "./components/ui/toast";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [shortenedUrl, setShortenedUrl] = useState<string>("");
+  const [shortenedUrl, setShortenedUrl] = useState<string | null>(null);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [inputText, setInputText] = useState<string>("");
 
   async function handleSubmit(e: any) {
@@ -20,8 +21,9 @@ export default function App() {
       setIsLoading(false);
       setShortenedUrl(shortenedUrl!);
     } catch (error) {
-      
+      setShortenedUrl(null);
       setIsLoading(false);
+      setErrorMsg("Error Occurred!");
     }
   }
 
@@ -29,7 +31,7 @@ export default function App() {
     <div className="flex flex-col items-center p-10">
       <p className="text-amber-50 text-center text-5xl"> SHORTEN YOUR URL</p>
 
-      <p className="text-sm text-red-600 my-2">
+      <p className="text-sm text-green-600 my-2">
         ...Paste your URL below to get a short one instantly..
       </p>
 
@@ -65,7 +67,7 @@ export default function App() {
 
           <div className="my-5"></div>
 
-          {shortenedUrl != "" ? (
+          {shortenedUrl != null || "" ? (
             <div className="flex flex-col justify-center items-center">
               <p>Click to Copy your short link: </p>
               <div className="flex flex-row items-center justify-center">
@@ -80,6 +82,12 @@ export default function App() {
                   <Copy onClick={copyShortLink} />
                 </span>
               </div>
+            </div>
+          ) : null}
+
+          {errorMsg !== null || "" ? (
+            <div className="flex flex-col justify-center items-center">
+              <p className="text-red-600"> {errorMsg}</p>
             </div>
           ) : null}
         </form>
